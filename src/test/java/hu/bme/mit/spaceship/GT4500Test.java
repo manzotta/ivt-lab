@@ -24,6 +24,7 @@ public class GT4500Test {
   @Test
   public void fireTorpedo_Single_Success(){
     // Arrange
+    // this.ship.wasPrimaryFiredLast = true; 
     when(primaryTs.isEmpty()).thenReturn(false); 
     when(primaryTs.fire(1)).thenReturn(true);
     
@@ -32,10 +33,13 @@ public class GT4500Test {
 
 
     // Act
-    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+    boolean result_1 = ship.fireTorpedo(FiringMode.SINGLE);
+    boolean result_2 = ship.fireTorpedo(FiringMode.SINGLE); 
 
     // Assert
-    assertEquals(true, result);
+    assertEquals(true, result_1);
+    assertEquals(true, result_1);
+
   }
 
   @Test
@@ -49,7 +53,7 @@ public class GT4500Test {
     //when(primaryTs.getTorpedoCount()).thenReturn(15);        
     when(secondaryTs.fire(secondaryTs.getTorpedoCount())).thenReturn(true);
 
-    
+
     // Act
     boolean result = ship.fireTorpedo(FiringMode.ALL);
 
